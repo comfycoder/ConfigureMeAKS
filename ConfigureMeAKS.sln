@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigureMeAKS", "ConfigureMeAKS\ConfigureMeAKS.csproj", "{B545A1C2-55E6-4B55-BBB2-68FED82AC7B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B545A1C2-55E6-4B55-BBB2-68FED82AC7B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B545A1C2-55E6-4B55-BBB2-68FED82AC7B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B545A1C2-55E6-4B55-BBB2-68FED82AC7B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B545A1C2-55E6-4B55-BBB2-68FED82AC7B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E650305F-4C5F-4E11-8C08-AD4E467CEAF3}
+	EndGlobalSection
+EndGlobal
