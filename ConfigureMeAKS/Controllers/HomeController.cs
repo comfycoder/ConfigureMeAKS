@@ -1,23 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using ConfigureMeAKS.Models;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Hosting;
 
 namespace ConfigureMeAKS.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly IConfiguration _config;
+        private readonly IHostingEnvironment _hostingEnv;
+
+        public HomeController(
+            IConfiguration config,
+            IHostingEnvironment hostingEnv)
         {
-            return View();
+            _config = config;
+            _hostingEnv = hostingEnv;
         }
 
-        public IActionResult Privacy()
+        public IActionResult Index()
         {
-            return View();
+            var viewModel = new HomeViewModel();
+
+            viewModel.EnvironmentName = _hostingEnv.EnvironmentName;
+            viewModel.HostName = System.Net.Dns.GetHostName();
+            viewModel.MySetting = _config["MySetting"];
+            viewModel.MySecret = "<NOT FOUND>";
+
+            var mySecret = "";
+
+            if (System.IO.File.Exists(viewModel.MySecretFile))
+            {
+                mySecret = System.IO.File.ReadAllText(viewModel.MySecretFile);
+            }
+            else
+            {
+                if (_hostingEnv.EnvironmentName.Equals("Development"))
+                {
+                    mySecret = _config["MySecret"];
+                }
+            }
+
+            viewModel.MySecret = mySecret;
+
+            return View(viewModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
